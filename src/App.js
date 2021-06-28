@@ -1,23 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import "./App.css";
+import Nav from "./Components/Nav.js";
+import NavItem from "./Components/NavItem.js";
+import Region from "./Components/Regions/Region";
+
+import LiveArea from './Components/Areas/Live';
+import HistoricalArea from './Components/Areas/Historical';
+
+const webSocket = new WebSocket('wss://city-ws.herokuapp.com');
 
 function App() {
+  const [cityAQIMap, setCityAQIMap] = useState({});
+  const [historicalData, setHistoricalData] = useState(new Map());
+
+  function stopSocketConnection() {
+    webSocket.close();
+  }
+
+  useEffect(() => {
+    webSocket.onmessage = (event) => {
+      const freshData = JSON.parse(event.data);
+      // console.log('event', event);
+    // Details for Live Data stored in next Line
+      setCityAQIMap(oldData => {
+        const currentDate = new Date()
+        freshData && freshData.forEach(x => {
+          oldData[x.city] = {val: x.aqi, time: currentDate.toString()};
+        })
+
+        return {...oldData};
+      });
+
+    // Details for Historical Data stored in next line  
+      setHistoricalData(historyData => {
+        // console.log(historyData, event.data)
+        freshData && freshData.forEach(x => {
+          const freshTime = new Date(event.timeStamp);
+        
+          const time = freshTime.getHours() + '_' + freshTime.getMinutes()// TODO: Get upto 2 minute level
+
+          let citiesList = historyData.get(time) || new Map(); // 21_05 => Map<cities> 
+
+          const arrAQIData = citiesList.get(x.city) || []; // Array<aqi>
+          arrAQIData.push(x.aqi)
+          citiesList.set(x.city, arrAQIData);
+          historyData.set(time, citiesList);
+        });
+
+        return historyData;
+      })
+    }
+
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Nav>
+        <NavItem href="#live">Live</NavItem>
+        <NavItem href="#historical">Historical</NavItem>
+      </Nav>
+      <section className="shadow-lg px-4 py-2">
+        <Region regionId="live">
+          <button onClick={stopSocketConnection}>Stop Live</button>
+          <br/>
+          <LiveArea dataSet={cityAQIMap} />
+        </Region>
+        <Region regionId="historical">
+          <HistoricalArea dataSet={historicalData} />
+        </Region>
+      </section>
     </div>
   );
 }
