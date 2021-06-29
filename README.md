@@ -1,3 +1,13 @@
+# AQI Live Tracker
+
+## Summary:
+This project tracks live AQI(Air Quality Index) for cities, received from a websocket connection. A web application is hosted for users to view the live data for multiple cities through a chart and table.
+
+## Web Application URL:
+User can load the web application at https://aqi-web-app.vercel.app/ 
+
+## Running Application locally:
+    
 In the project directory, you can run:
 
 ### `npm start`
@@ -8,52 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-
-
-# AQI Live Tracker
-
-## Summary:
-This project tracks live AQI(Air Quality Index) for cities, received from a websocket connection. A web application is hosted for users to view the live data for multiple cities through a chart and table.
-
-## Web Application URL:
-User can load the web application at <insert URL here> 
-
+    
 ## Usage:
 Once the application is loaded, users are provided with two options to check _Live_ and _Historical_ data
 
@@ -106,7 +71,7 @@ Evaluations that were ignored:
 
 ## Websocket Server:
 
-The websocket server URL provided in the assignment sheet is ws://city-w.herokuapp.com/ Subscribing to this URL wouldn't fetch response data as the server responds to a successful handshake request from browser only over wss protocol rather than ws.
+The websocket server URL provided in the assignment sheet is ws://city-w.herokuapp.com/ Subscribing to this URL wouldn't fetch response data when using https, as the server responds to a successful handshake request from browser only over wss protocol rather than ws.
 
 The wss protocol establishes a WebSocket over an encrypted TLS connection, while the ws protocol uses an unencrypted connection.
 
@@ -209,13 +174,17 @@ Check [breakdown of efforts](#breakdown-of-efforts-for-development) for more det
 
 ## Total Time invested:
 
-As per table - [Features built vs Time Taken](#features-built-vs-time-taken) - Total time taken: 8h 10m 
-Project Documentation - 4h
-Project creation - 10m
-Project deployment -  
+As per table 
+        - [Features built vs Time Taken](#features-built-vs-time-taken) - Total time taken: 8h 10m 
+
+Additional efforts:
+- Project Documentation - 4h
+- Project creation - 10m
+- Project deployment -  2h
 
 ## Further work:
 - Test cases 
+- Legends and colors for charts
 - Data showcase on clicking _Historical_ tab. 
 
 ## Spikes
