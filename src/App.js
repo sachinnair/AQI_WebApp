@@ -7,7 +7,7 @@ import Region from "./Components/Regions/Region";
 import LiveArea from './Components/Areas/Live';
 import HistoricalArea from './Components/Areas/Historical';
 
-const webSocket = new WebSocket('ws://city-ws.herokuapp.com');
+const webSocket = new WebSocket('wss://city-ws.herokuapp.com');
 
 function App() {
   const [cityAQIMap, setCityAQIMap] = useState({});

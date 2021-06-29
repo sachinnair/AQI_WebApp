@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 export default function TableSector({ dataSet, setCityOnChart }) {
     const rows = [];
     const refreshTime = new Date();

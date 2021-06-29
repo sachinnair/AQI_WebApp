@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import {
   VictoryChart,
-  VictoryZoomContainer,
   VictoryLine,
-  VictoryBrushContainer,
   VictoryAxis,
   VictoryTooltip,
   createContainer,
-  VictoryVoronoiContainer,
 } from "victory";
 
-export default function ChartSector({ dataSet, cities, currentTime }) {
+export default function ChartSector({ dataSet, cities }) {
   const [chartData, setChartData] = useState({});
 
   const CustomZoomVoronoiContainer = createContainer("zoom", "voronoi");
@@ -49,6 +46,7 @@ export default function ChartSector({ dataSet, cities, currentTime }) {
     }
 
     setChartData(updatedChartData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataSet]);
 
   return (

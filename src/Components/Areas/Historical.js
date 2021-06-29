@@ -1,3 +1,3 @@
-export default function() {
+export default function Historical() {
     return 'History Data'
 }
