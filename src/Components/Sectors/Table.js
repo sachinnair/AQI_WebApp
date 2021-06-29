@@ -61,9 +61,16 @@ export default function TableSector({ dataSet, setCityOnChart }) {
         rows.push((<div data-cityId={x} className={`grid grid-cols-3 gap-2`} onClick={toggleSelection} key={x} >
             <span className='text-center'>{x}</span>  
             <span className={`bg-black font-bold text-center ${getAQSCategory(dataSet[x].val)}`}>{(dataSet[x].val).toFixed(2)}</span>
-            <span>{getUpdatedTime(dataSet[x].time)}</span>
+            <span className={`text-sm font-light`}>{getUpdatedTime(dataSet[x].time)}</span>
         </div>))
     } 
 
-    return <div onClick={setCityOnChart}>{rows}</div>
+    return <div onClick={setCityOnChart}>
+        {rows.length > 0 && <div className={`grid grid-cols-3 gap-2 text-white bg-coolGray-600 font-serif`}> 
+            <span className="font-bold text-center">City</span>
+            <span className="font-bold text-center">AQI (Air Quality Index)</span>
+            <span className="font-bold text-center">Last Refreshed</span>  
+        </div>}
+        {rows}
+    </div>
 }

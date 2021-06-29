@@ -7,7 +7,7 @@ import Region from "./Components/Regions/Region";
 import LiveArea from './Components/Areas/Live';
 import HistoricalArea from './Components/Areas/Historical';
 
-const webSocket = new WebSocket('wss://city-ws.herokuapp.com');
+const webSocket = new WebSocket('ws://city-ws.herokuapp.com');
 
 function App() {
   const [cityAQIMap, setCityAQIMap] = useState({});
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     webSocket.onmessage = (event) => {
       const freshData = JSON.parse(event.data);
-      // console.log('event', event);
+
     // Details for Live Data stored in next Line
       setCityAQIMap(oldData => {
         const currentDate = new Date()
@@ -33,7 +33,6 @@ function App() {
 
     // Details for Historical Data stored in next line  
       setHistoricalData(historyData => {
-        // console.log(historyData, event.data)
         freshData && freshData.forEach(x => {
           const freshTime = new Date(event.timeStamp);
         
@@ -54,14 +53,14 @@ function App() {
   })
 
   return (
-    <div className="">
+    <div className="container mx-auto">
       <Nav>
         <NavItem href="#live">Live</NavItem>
         <NavItem href="#historical">Historical</NavItem>
       </Nav>
       <section className="shadow-lg px-4 py-2">
         <Region regionId="live">
-          <button onClick={stopSocketConnection}>Stop Live</button>
+          <button className="rounded-full text-xs bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" onClick={stopSocketConnection}>Disconnect</button>
           <br/>
           <LiveArea dataSet={cityAQIMap} />
         </Region>
