@@ -172,6 +172,8 @@ Check [breakdown of efforts](#breakdown-of-efforts-for-development) for more det
 
 ## Deployment and Automation:
 
+Code is deployed on Vercel.
+
 ## Total Time invested:
 
 As per table 
