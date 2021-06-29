@@ -1,13 +1,13 @@
 @layer components {
-    .nav-item {
-        @apply block px-4 py-2 bg-amber-100 text-amber-600 shadow-inner;
-    }
+  .nav-item {
+    @apply block px-4 py-2 bg-amber-100 text-amber-600 shadow-inner;
+  }
 
-    .nav-item--clicked {
-        @apply bg-amber-300 text-amber-900 pointer-events-none rounded-md;
-    }
+  .nav-item--clicked {
+    @apply bg-amber-300 text-amber-900 pointer-events-none rounded-md;
+  }
 
-    .nav-item--reset {
-        @apply hover:bg-amber-200 hover:text-amber-900;
-    }
+  .nav-item--reset {
+    @apply hover:bg-amber-200 hover:text-amber-900;
+  }
 }
