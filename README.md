@@ -22,20 +22,20 @@ You will also see any lint errors in the console.
 ## Usage:
 Once the application is loaded, users are provided with two options to check _Live_ and _Historical_ data
 
-<Insert screenshot here - Tab bar with mouse over Live >
+
 
 ### On clicking _Live_ tab:
-Users will view a table showcasing data as seen in screenshot below:
-    <Insert screenshot here - Table with data> 
+Users will view a table showcasing live Air Quality index of different cities in India.  
 
 ### Table columns:
 
 **City**: Contains unique list of cities whose AQI records are fetched. Cities are randomly listed based on availability of data.
 
 **AQI (Air Quality Index)**: It showcases latest AQI data for a city. The values are color coded based on category as seen in following image.
-    <Insert screenshot here - Color Category table>
+  
+![AQI Category Table](https://lh3.googleusercontent.com/Q2jnSQAVRxOJQZSLRR9EHBei6Ff3g5BTTKsHiOuj2v7Z4RKJzkF7zRDNzugtovx-4D0gqYHlznJ_SDdg6pZHNrpaJ4zILYYsLil4BdHN0ArWGxkQZtqG19TzrkdNcWUOjcyJOxwd)
 
-**Last Updated**: Provides information on when the data was last updated.
+**Last Refreshed**: Provides information on when the data was last updated.
 
 ### How to view a Chart?
 
